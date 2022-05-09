@@ -1,1 +1,1 @@
-web: ./run.shgit gk
+web: ./run.sh
