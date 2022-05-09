@@ -19,10 +19,10 @@ ORGANIZATION_ENGINE="$(echo "$VCAP_SERVICES" | ./jq '."hashicorp-vault"[0].crede
 
 while true; do
   ./vault token renew
-  echo "SERVICE:      $(./vault read "${SERVICE_ENGINE}/secret" -field=SECRET_TYPE)"
-  echo "APPLICATION:  $(./vault read "${APPLICATION_ENGINE}/secret" -field=SECRET_TYPE)"
-  echo "SPACE:        $(./vault read "${SPACE_ENGINE}/secret" -field=SECRET_TYPE)"
-  echo "ORGANIZATION: $(./vault read "${ORGANIZATION_ENGINE}/secret" -field=SECRET_TYPE)"
+  echo "SERVICE:      $(./vault read -field=SECRET_TYPE "${SERVICE_ENGINE}/secret")"
+  echo "APPLICATION:  $(./vault read -field=SECRET_TYPE "${APPLICATION_ENGINE}/secret")"
+  echo "SPACE:        $(./vault read -field=SECRET_TYPE "${SPACE_ENGINE}/secret")"
+  echo "ORGANIZATION: $(./vault read -field=SECRET_TYPE "${ORGANIZATION_ENGINE}/secret")"
   echo ''
   sleep 10
 done
